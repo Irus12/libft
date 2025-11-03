@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschilli <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 03:02:26 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 03:02:46 by nschilli         ###   ########.ch       */
+/*   Created: 2025/11/03 15:13:13 by nschilli          #+#    #+#             */
+/*   Updated: 2025/11/03 15:13:15 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "libft.h"
 #include <stddef.h>
