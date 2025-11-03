@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschilli <marvin@42lausanne.ch>             +#+  +:+       +#+       */
+/*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 02:04:28 by nschilli          #+#    #+#             */
-/*   Updated: 2025/10/22 02:04:36 by nschilli         ###   ########.ch       */
+/*   Updated: 2025/11/03 19:14:01 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//test
+
 void	ft_bzero(void *s, size_t n)
 {
 	char	*t;

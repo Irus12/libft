@@ -6,7 +6,7 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:14:35 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:22:13 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 20:04:21 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,18 @@ static void	allfree(char **tab, size_t max)
 	free (tab);
 }
 
-//cas critique " hello\0", "hello  \0"
-//replace last_is_sep by str[i - 1] == sep, and add i > 0
+/*
+(str[i] == sep && i > 0 && str[i - 1] != sep)
+detects when we exit a word
+We encounter a separator while the previous character was a word
 
+(str[i + 1] == '\0' && letter_cnt > 0)
+detects when it's the end of a word
+
+in both condition it allocates the right amount to the sub-array
+
+Stops and returns -1 if the allocation fails, otherwise return 0
+*/
 static int	setupmalloc(char **tab, char *str, char sep)
 {
 	size_t	current_wrd;
@@ -55,6 +64,14 @@ static int	setupmalloc(char **tab, char *str, char sep)
 	return (0);
 }
 
+/*
+(i > 0 && str[i - 1] != sep)
+switch to the next sub-array if a sep is detected
+
+if (y > 0)
+here to manage the last the last \0 
+other methods makes it hard to read
+*/
 static void	building(char **tab, char *str, char sep)
 {
 	size_t	x;
@@ -83,6 +100,13 @@ static void	building(char **tab, char *str, char sep)
 		tab[x][y] = '\0';
 }
 
+/*
+last_is_sep, (OG idea scrapped in other fct because of length)
+flag that tells if last char is a separator
+
+(str[i] != sep && last_is_sep)
+we are inside a word so we count the letters
+*/
 static size_t	wordscounter(char *str, char sep)
 {
 	size_t	i;
@@ -123,5 +147,3 @@ char	**ft_split(char const *s, char c)
 	tab[nbrwords] = NULL;
 	return (tab);
 }
-
-// "salut les amis"

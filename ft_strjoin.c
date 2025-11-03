@@ -6,12 +6,11 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:15:08 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:21:34 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 20:04:38 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//+1 au malloc pour le \0
 
 static void	building(char *out, char const *s1, char const *s2 )
 {

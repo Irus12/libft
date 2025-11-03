@@ -6,13 +6,15 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:15:21 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:15:22 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:19:21 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//size inclue le \0
-/* copier au plus dsize - 1 octets, current size = i+1 */
+
+/* 
+copies at max dsize - 1 octets
+*/
 size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
 {
 	size_t	i;
@@ -22,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
 	if (dsize == 0)
 		return (slen);
 	i = 0;
-	while (i + 1 < dsize && src[i])
+	while (i < dsize - 1 && src[i])
 	{
 		dst[i] = src[i];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:15:14 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:15:16 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:11:57 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,15 @@ static size_t	ft_strnlen(char *c, size_t max)
 	return (i);
 }
 
-//size c'est taille du buffer, pas celle du string dans le buffer
-//check on donne une bonne size, fait passer si size = dlen + 1
-//check si y'a de la place, fait pas passer si size = dlen + 1
-//size includes \0
+/*
+size is the maximum length of the finally built string
+dlen is the amount of existing characters in the buffer limited by the size
+parameter
+" char dst[20] = "Hello"; ", size is 20 and dlen will be 5
+
+"if (dlen < size)" checks if there's at least 1 byte left of the \0
+"(size - dlen - 1)" is the amount of writable space left
+*/
 size_t	ft_strlcat(char *dst, const char *str, size_t size)
 {
 	size_t	dlen;
@@ -44,7 +49,7 @@ size_t	ft_strlcat(char *dst, const char *str, size_t size)
 			dst[dlen + i] = (char)str[i];
 			i++;
 		}
-		dst[dlen + i] = 0;
+		dst[dlen + i] = '\0';
 	}
 	return (dlen + ft_strlen((char *) str));
 }

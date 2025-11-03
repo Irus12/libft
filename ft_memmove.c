@@ -6,14 +6,18 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:13:52 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:13:56 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:25:19 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//"overlap" si on donne genre 'tab' et 'tab + 2'
-//on compare ou commence l'adresse mémoir de cdest et crsc, pas la length
+/*
+Critical cases when there's parameter like 'tab' and 'tab + 2'
+We compare where the memory adress of cdest and crsc starts, not their length
+if cdest is stored after crsc then we copy csrc from the end, otherwise from
+the begining
+*/
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*cdest;

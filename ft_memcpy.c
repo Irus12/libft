@@ -6,12 +6,14 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:13:42 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:13:45 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:18:14 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//si un param est null segfault, si les deux return null
+/*
+ if one parameter is null it has to segfault, if both return null.
+*/
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*cdest;
