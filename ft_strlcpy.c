@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nschilli <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/03 02:25:13 by nschilli          #+#    #+#             */
+/*   Updated: 2025/11/03 02:28:05 by nschilli         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 //size inclue le \0
-size_t ft_strlcpy(char *dst, const char *src, size_t size)
+/* copier au plus dsize - 1 octets, current size = i+1 */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
 {
 	size_t	i;
-	size_t	len;
+	size_t	slen;
 
+	slen = ft_strlen(src);
+	if (dsize == 0)
+		return (slen);
 	i = 0;
-	len = ft_strlen(src);
-	if (size < 1)
+	while (i + 1 < dsize && src[i])
 	{
-		while(i < size - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
-	return (len);
+	dst[i] = '\0';
+	return (slen);
 }

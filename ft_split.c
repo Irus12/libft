@@ -1,0 +1,127 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nschilli <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/03 02:15:25 by nschilli          #+#    #+#             */
+/*   Updated: 2025/11/03 02:23:58 by nschilli         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static void	allfree(char **tab, size_t max)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < max)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free (tab);
+}
+
+//cas critique " hello\0", "hello  \0"
+//replace last_is_sep by str[i - 1] == sep, and add i > 0
+
+static int	setupmalloc(char **tab, char *str, char sep)
+{
+	size_t	current_wrd;
+	size_t	letter_cnt;
+	size_t	i;
+
+	current_wrd = 0;
+	letter_cnt = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != sep)
+			letter_cnt++;
+		if ((str[i] == sep && i > 0 && str[i - 1] != sep)
+			|| (str[i + 1] == '\0' && letter_cnt > 0))
+		{
+			tab[current_wrd] = malloc((sizeof(char)) * (letter_cnt + 1));
+			if (!tab[current_wrd])
+				return (allfree(tab, current_wrd), -1);
+			current_wrd++;
+			letter_cnt = 0;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static void	filling(char **tab, char *str, char sep)
+{
+	size_t	x;
+	size_t	y;
+	size_t	i;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != sep)
+		{
+			tab[x][y] = str[i];
+			y++;
+		}
+		else if (i > 0 && str[i - 1] != sep)
+		{
+			tab[x][y] = '\0';
+			x++;
+			y = 0;
+		}
+		i++;
+	}
+	if (y > 0)
+		tab[x][y] = '\0';
+}
+
+static size_t	wordscounter(char *str, char sep)
+{
+	size_t	i;
+	size_t	cnt;
+	size_t	last_is_sep;
+
+	i = 0;
+	cnt = 0;
+	last_is_sep = 1;
+	while (str[i])
+	{
+		if (str[i] != sep && last_is_sep)
+		{
+			cnt++;
+			last_is_sep = 0;
+		}
+		else if (str[i] == sep)
+			last_is_sep = 1;
+		i++;
+	}
+	return (cnt);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+	size_t	nbrwords;
+
+	if (!s)
+		return (NULL);
+	nbrwords = wordscounter((char *) s, c);
+	tab = malloc(sizeof(char *) * (nbrwords + 1));
+	if (!tab)
+		return (NULL);
+	if (setupmalloc(tab, (char *) s, c) == -1)
+		return (NULL);
+	filling(tab, (char *) s, c);
+	tab[nbrwords] = NULL;
+	return (tab);
+}
+
+// "salut les amis"

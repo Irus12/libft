@@ -5,11 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 18:35:01 by nschilli          #+#    #+#             */
-/*   Updated: 2025/10/10 09:11:49 by nschilli         ###   ########.fr       */
+/*   Created: 2025/10/21 21:33:41 by nschilli          #+#    #+#             */
+/*   Updated: 2025/10/21 21:33:43 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+
 int	ft_isdigit(int c)
 {
 	if (48 <= c && c <= 57)

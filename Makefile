@@ -1,5 +1,5 @@
 SRC := $(wildcard *c)
-NAME := Libft.a
+NAME := libft.a
 OBJ := $(SRC:.c=.o)
 RM := rm -f
 CC := gcc -Wextra -Werror -Wall 

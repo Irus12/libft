@@ -1,36 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nschilli <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/03 03:04:21 by nschilli          #+#    #+#             */
+/*   Updated: 2025/11/03 03:04:21 by nschilli         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
 
-int ft_atoi(const char *nptr) 
+static int	sign(char s)
 {
-    char    *str;
-    size_t  i;
-    int sgn;
-    int out;
-
-    str = (char *) nptr;
-    i = 0;
-    sgn = 1;
-    out = 0;
-    while (str[i] == ' ')
-    {
-        i++;
-    }
-    if (str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sgn = -1;
-        i++;
-    }
-    while (49 <= str[i] && str[i] <= 57)
-    {
-        out = out*10 + str[i] - 48;
-    } 
-    return (sgn * out);
+	if (s == '-')
+		return (-1);
+	return (1);
 }
 
-int main()
+int	ft_atoi(const char *nptr)
 {
-    int i = ft_atoi("12res");
-    printf("%d",i);
+	char	*str;
+	int		i;
+	int		last_sgn;
+	int		out;
+
+	str = (char *) nptr;
+	i = 0;
+	last_sgn = 1;
+	out = 0;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		last_sgn = sign(str[i]);
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		out = out * 10 + (str[i] - 48);
+		i++;
+	}
+	return (out * last_sgn);
 }
