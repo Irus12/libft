@@ -6,10 +6,9 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:13:13 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:13:15 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:22:39 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 #include <stddef.h>
@@ -31,7 +30,7 @@ static int	nbrdigits(long c)
 	return (digits);
 }
 
-static void	filling(char *tab, long nbr, int ndgt, int shift)
+static void	building(char *tab, long nbr, int ndgt, int shift)
 {
 	tab[ndgt + shift] = '\0';
 	ndgt--;
@@ -63,6 +62,6 @@ char	*ft_itoa(int c)
 	out = malloc((digits + 1 + shift) * sizeof(char));
 	if (!out)
 		return (NULL);
-	filling(out, nbr, digits, shift);
+	building(out, nbr, digits, shift);
 	return (out);
 }

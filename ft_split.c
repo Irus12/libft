@@ -6,7 +6,7 @@
 /*   By: nschilli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:14:35 by nschilli          #+#    #+#             */
-/*   Updated: 2025/11/03 15:14:37 by nschilli         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:22:13 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	setupmalloc(char **tab, char *str, char sep)
 	return (0);
 }
 
-static void	filling(char **tab, char *str, char sep)
+static void	building(char **tab, char *str, char sep)
 {
 	size_t	x;
 	size_t	y;
@@ -119,7 +119,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (setupmalloc(tab, (char *) s, c) == -1)
 		return (NULL);
-	filling(tab, (char *) s, c);
+	building(tab, (char *) s, c);
 	tab[nbrwords] = NULL;
 	return (tab);
 }
